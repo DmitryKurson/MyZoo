@@ -1,8 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-def index(request):
-    return render(request, "main/index.html")
+def show_main_page(request):
+    return render(request, "main/main_page.html")
 
 def show_contacts(request):
     return render(request, "main/contacts.html")
