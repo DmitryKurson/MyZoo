@@ -6,7 +6,17 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+    {% load static %}
+    <img style="width:100px" src="{% static 'main/img/main_logo.jpg' %}">
+    <a href="{% url 'contacts' %}">Наші контакти</a>
+    <a href="{% url 'prices' %}">Наші ціни</a>
+    <a href="{% url 'animals' %}">Наші тварини</a>
+    <a href="{% url 'about' %}">Про нас</a>
+    <br>
     {% block content %}
     {% endblock %}
 </body>
+<footer>
+    <p>© 2025 Зоопарк. Усі права захищені.</p>
+</footer>
 </html>
