@@ -6,7 +6,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Наші тварини</title>
-    {{animals}}
+    {% if count == 0 %}
+        <h5>Нажаль тварини відсутні</h5>
+    {% else %}
+        {% for i in animals %}
+            <h3>{{ i.type }}</h3>
+            <h6>{{ i.color }}</h6>
+            <h6>{{ i.age }}</h6>
+            <h6>{{ i.zone }}</h6>
+            <br>
+        {% endfor %}
+
+    {% endif %}
 </head>
 <body>
 

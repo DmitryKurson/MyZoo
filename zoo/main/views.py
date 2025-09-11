@@ -16,4 +16,5 @@ def show_about(request):
 
 def show_animals(request):
     all_animals = Animal.objects.all()
-    return render(request, "main/animals.html", {'animals':all_animals})
+    count_of_animals = len(all_animals)
+    return render(request, "main/animals.html", {'animals':all_animals, "count":count_of_animals})
