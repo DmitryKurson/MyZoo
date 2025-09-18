@@ -12,6 +12,9 @@ class Animal(models.Model):
     def __str__(self):
         return self.type
 
+    def get_absolute_url(self):
+        return f'moderator/animal/{self.id}'
+
 class Client(models.Model):
     id = models.IntegerField("№", primary_key=True)
     name = models.CharField("Ім'я", max_length=20)

@@ -6,27 +6,19 @@ from main.models import Animal
 class AnimalForm(ModelForm):
     class Meta:
         model = Animal
-        fields = ["id", "type", "color", "age", "zone"]
+        fields = ["type", "color", "age", "zone"]
         widgets = {
-            "id":NumberInput(attrs={
-                'class': 'form-control',
-                'placeholder':'Номер'
-            }),
             "type": TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Вид'
+                'class': 'form-control'
             }),
             "color": TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Колір'
+                'class': 'form-control'
             }),
             "age": NumberInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Вік'
+                'class': 'form-control'
             }),
             "zone": NumberInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Локація'
+                'class': 'form-control'
             }),
         }
 

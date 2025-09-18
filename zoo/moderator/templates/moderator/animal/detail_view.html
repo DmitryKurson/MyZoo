@@ -6,5 +6,8 @@
 <p>{{animal.color}}</p>
 <p>{{animal.age}}</p>
 <p>{{animal.zone}}</p>
+
+<a href="{% url 'animal_update' animal.id %}">Редагувати</a>
+
 <br><a href="..">Назад</a><br>
 {% endblock %}

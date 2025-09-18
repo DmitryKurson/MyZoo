@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import DetailView
+from django.views.generic import DetailView, UpdateView
 
 from .forms import AnimalForm
 from main.models import Animal
@@ -9,7 +9,10 @@ class AnimalDetailView(DetailView):
     template_name = "moderator/animal/detail_view.html"
     context_object_name = "animal"
 
-
+class AnimalUpdateView(UpdateView):
+    model = Animal
+    template_name = "moderator/animal/update.html"
+    form_class = AnimalForm
 
 def show_moderator_main_page(request):
     return render(request, "moderator/main_page.html")
