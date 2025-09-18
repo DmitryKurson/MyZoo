@@ -20,10 +20,13 @@
         <td>{{ i.color }}</td>
         <td>{{ i.age }}</td>
         <td>{{ i.zone }}</td>
+        <td>
+            <a href="{% url 'detail_view' i.id %}">Детальніше</a>
+        </td>
      </tr>
     {% endfor %}
 </table>
-
+<a href="..">Назад</a><br>
 
 
 {% endblock %}

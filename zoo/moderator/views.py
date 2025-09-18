@@ -6,19 +6,17 @@ from main.models import Animal
 
 class AnimalDetailView(DetailView):
     model = Animal
-    template_name = ???
+    template_name = "moderator/animal/detail_view.html"
     context_object_name = "animal"
 
 
 
-
-
-def show_admin_main_page(request):
+def show_moderator_main_page(request):
     return render(request, "moderator/main_page.html")
 
 def show_animals(request):
     all_animals = Animal.objects.all()
-    return render(request, "moderator/animal/animals.html", {'all_animals':all_animals})
+    return render(request, "moderator/animal/show.html", {'all_animals':all_animals})
 
 
 def animal_create(request):

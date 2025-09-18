@@ -1,0 +1,10 @@
+{% extends "layout_m.html" %}
+{% block title %}Перегляд {{animal.type}}{% endblock %}
+{% block content %}
+<h1>{{animal.type}}</h1>
+<p>{{animal.id}}</p>
+<p>{{animal.color}}</p>
+<p>{{animal.age}}</p>
+<p>{{animal.zone}}</p>
+<br><a href="..">Назад</a><br>
+{% endblock %}
