@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Додавання тварини</title>
-    <h1>Додати нову тварину</h1>
-</head>
-<body>
-     <form method="post">
-        {% csrf_token %}
-        {{ form.id }}<br><br>
-        {{ form.type }}<br><br>
-        {{ form.color }}<br><br>
-        {{ form.age }}<br><br>
-        {{ form.zone }}<br><br>
-        <button type="submit">Додати</button>
-    </form>
-</body>
-</html>
+{% extends "layout_m.html" %}
+{% block title %}Додавання тварини{% endblock %}
+{% block content %}
+
+<h1>Додати нову тварину</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.id }}<br><br>
+    {{ form.type }}<br><br>
+    {{ form.color }}<br><br>
+    {{ form.age }}<br><br>
+    {{ form.zone }}<br><br>
+    <button type="submit">Додати</button>
+</form>
+{% endblock %}

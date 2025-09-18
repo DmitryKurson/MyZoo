@@ -1,9 +1,25 @@
 from django.shortcuts import render, redirect
+from django.views.generic import DetailView
 
 from .forms import AnimalForm
+from main.models import Animal
+
+class AnimalDetailView(DetailView):
+    model = Animal
+    template_name = ???
+    context_object_name = "animal"
+
+
+
+
 
 def show_admin_main_page(request):
     return render(request, "moderator/main_page.html")
+
+def show_animals(request):
+    all_animals = Animal.objects.all()
+    return render(request, "moderator/animal/animals.html", {'all_animals':all_animals})
+
 
 def animal_create(request):
     if request.method == 'POST':
