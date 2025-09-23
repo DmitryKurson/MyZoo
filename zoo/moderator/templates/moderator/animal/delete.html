@@ -1,0 +1,11 @@
+{% extends "layout_m.html" %}
+{% block title %}Видалення тварини{% endblock %}
+{% block content %}
+<h1>Ви впевнені що хочете видалити?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Так, видалити</button>
+</form>
+
+
+{% endblock %}
