@@ -14,7 +14,7 @@ def show_contacts(request):
     return render(request, "main/contacts.html")
 
 def show_prices(request):
-    logger.error("Користувач перейшов на сторінку цін")
+    #logger.error("Користувач перейшов на сторінку цін")
     return render(request, "main/prices.html")
 
 def show_about(request):

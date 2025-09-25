@@ -25,8 +25,19 @@ def show_moderator_main_page(request):
 
 def show_animals(request):
     all_animals = Animal.objects.all()
+    filtered_animals = all_animals
 
-    return render(request, "moderator/animal/show.html", {'all_animals':all_animals})
+    if request.method == 'POST':
+        filter = request.POST.get("filter")
+
+        if filter != '':
+            filtered_animals = []
+            for i in all_animals:
+                if i.type == filter:
+                    filtered_animals.append(i)
+
+
+    return render(request, "moderator/animal/show.html", {'all_animals':filtered_animals})
 
 
 def animal_create(request):

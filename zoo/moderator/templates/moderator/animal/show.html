@@ -2,9 +2,17 @@
 {% block title %}Керування тваринами{% endblock %}
 {% block content %}
 
+<br>
 <a href="{% url 'animals_create' %}">Додати тварину</a>
 <br>
-
+<br>
+<form method="post">
+    {% csrf_token %}
+    <p>Вид:</p>
+    <input name="filter" type="text">
+    <button type="submit">{% block b %}ОК{% endblock %}</button>
+</form>
+<br>
 <table>
     <tr>
         <th>id</th>
