@@ -12,9 +12,53 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+LOGGING = {
+    'version':1,
+    'disable_existing_loggers': False,
+    'formatters':
+    {
+        'simple':
+        {
+            'format':"[ONLY FOR DEVELOPERS] LOGGING SIMPLE| Level: {levelname}. Text: {message}",
+            'style': '{'
+        },
+        'verbose':{
+            'format':"[ONLY FOR DEVELOPERS] LOGGING VERBOSE| Level: {levelname}. Date: {asctime}. Module: {module}. Text: {message}",
+            'style': '{'
+        }
+
+    },
+    'handlers':
+    {
+        'console':
+        {
+            'level':'INFO',
+            'class':'logging.StreamHandler',
+            'formatter':'simple'
+        },
+        'file':
+        {
+            'level':'ERROR',
+            'class':'logging.FileHandler',
+            'formatter': 'verbose',
+            'filename':'zoo_logs.log'
+        }
+    },
+    'loggers':
+    {
+        'main':{
+            'handlers':['console', 'file'],
+            'levels':['INFO', 'ERROR'],
+            'propagate':False
+        }
+    }
+}
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
