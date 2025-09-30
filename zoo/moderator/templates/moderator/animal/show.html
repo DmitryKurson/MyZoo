@@ -11,11 +11,26 @@
 
     <table>
         <tr>
-            <th><input name="filter_id" type="number"><br>id</th>
-            <th><input name="filter_type" type="text"><br>Вид</th>
-            <th><input name="filter_color" type="text"><br>Колір</th>
-            <th><input name="filter_age" type="number"><br>Вік</th>
-            <th><input name="filter_zone" type="number"><br>Зона</th>
+            <th>
+                <input name="filter_id" type="number"><br>
+                <a href="?sort=id&dir={% if sort_field == 'id' and direction == 'asc' %}desc{% else %}asc{% endif %}">Id</a>
+            </th>
+            <th>
+                <input name="filter_type" type="text"><br>
+                <a href="?sort=type&dir={% if sort_field == 'type' and direction == 'asc' %}desc{% else %}asc{% endif %}">Вид</a>
+            </th>
+            <th>
+                <input name="filter_color" type="text"><br>
+                <a href = "?sort=color&dir={% if sort_field == 'color' and direction == 'asc' %}desc{% else %}asc{% endif %}">Колір</a>
+            </th>
+            <th>
+                <input name="filter_age" type="number"><br>
+                <a href = "?sort=age&dir={% if sort_field == 'age' and direction == 'asc' %}desc{% else %}asc{% endif %}">Вік</a>
+            </th>
+            <th>
+                <input name="filter_zone" type="number"><br>
+                <a href = "?sort=zone&dir={% if sort_field == 'zone' and direction == 'asc' %}desc{% else %}asc{% endif %}">Зона</a>
+            </th>
             <th><button type="submit">{% block b %}ОК{% endblock %}</button><br><br></th>
         </tr>
         {% for i in all_animals %}

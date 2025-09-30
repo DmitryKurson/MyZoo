@@ -25,7 +25,8 @@ def show_moderator_main_page(request):
 
 def show_animals(request):
     all_animals = Animal.objects.all()
-    filtered_animals = all_animals
+    sort_field = request.GET.get("sort", "id")
+    direction = request.GET.get("dir", "asc")
 
     if request.method == 'POST':
         filters_fields = ['id', 'type', 'color', 'age', 'zone']
@@ -34,9 +35,14 @@ def show_animals(request):
             value = request.POST.get(f"filter_{i}")
             if value:
                 filters[i] = value
-        filtered_animals = Animal.objects.filter(**filters)
+        all_animals = Animal.objects.filter(**filters)
 
-    return render(request, "moderator/animal/show.html", {'all_animals':filtered_animals})
+    if direction == 'desc':
+        all_animals = all_animals.order_by(f"-{sort_field}")
+    else:
+        all_animals = all_animals.order_by(sort_field)
+
+    return render(request, "moderator/animal/show.html", {'all_animals':all_animals, "sort_field":sort_field, "direction":direction})
 
 
 def animal_create(request):
