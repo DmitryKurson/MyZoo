@@ -28,14 +28,14 @@ def show_animals(request):
     filtered_animals = all_animals
 
     if request.method == 'POST':
-        filter = request.POST.get("filter")
+        filters = [request.POST.get("filter_id"), request.POST.get("filter_type"), request.POST.get("filter_color"), request.POST.get("filter_age"), request.POST.get("filter_zone")]
 
-        if filter != '':
-            filtered_animals = []
-            for i in all_animals:
-                if i.type == filter:
+        filtered_animals = []
+        for i in all_animals:
+            animal_attr = [i.id, i.type, i.color, i.age, i.zone]
+            for j in range(len(animal_attr)):
+                if filters[j] != '' and filters[j] == animal_attr[j]:
                     filtered_animals.append(i)
-
 
     return render(request, "moderator/animal/show.html", {'all_animals':filtered_animals})
 

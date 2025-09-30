@@ -8,32 +8,30 @@
 <br>
 <form method="post">
     {% csrf_token %}
-    <p>Вид:</p>
-    <input name="filter" type="text">
-    <button type="submit">{% block b %}ОК{% endblock %}</button>
+
+    <table>
+        <tr>
+            <th><input name="filter_id" type="number"><br>id</th>
+            <th><input name="filter_type" type="text"><br>Вид</th>
+            <th><input name="filter_color" type="text"><br>Колір</th>
+            <th><input name="filter_age" type="number"><br>Вік</th>
+            <th><input name="filter_zone" type="number"><br>Зона</th>
+            <th><button type="submit">{% block b %}ОК{% endblock %}</button><br><br></th>
+        </tr>
+        {% for i in all_animals %}
+        <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.type }}</td>
+            <td>{{ i.color }}</td>
+            <td>{{ i.age }}</td>
+            <td>{{ i.zone }}</td>
+            <td>
+                <a href="{% url 'detail_view' i.id %}">Детальніше</a>
+            </td>
+         </tr>
+        {% endfor %}
+    </table>
 </form>
-<br>
-<table>
-    <tr>
-        <th>id</th>
-        <th>Вид</th>
-        <th>Колір</th>
-        <th>Вік</th>
-        <th>Зона</th>
-    </tr>
-    {% for i in all_animals %}
-    <tr>
-        <td>{{ i.id }}</td>
-        <td>{{ i.type }}</td>
-        <td>{{ i.color }}</td>
-        <td>{{ i.age }}</td>
-        <td>{{ i.zone }}</td>
-        <td>
-            <a href="{% url 'detail_view' i.id %}">Детальніше</a>
-        </td>
-     </tr>
-    {% endfor %}
-</table>
 <a href="..">Назад</a><br>
 
 
