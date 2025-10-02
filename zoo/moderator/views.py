@@ -1,8 +1,14 @@
+import os
+from hashlib import sha256
+from dotenv import load_dotenv
+
 from django.shortcuts import render, redirect
 from django.views.generic import DetailView, UpdateView, DeleteView
 
 from .forms import AnimalForm
 from main.models import Animal
+
+load_dotenv()
 
 class AnimalDetailView(DetailView):
     model = Animal
@@ -21,11 +27,12 @@ class AnimalDeleteView(DeleteView):
 
 def show_moderator_login(request):
     if request.method=='POST':
-        entered_login = request.POST.get("login")
-        entered_password = request.POST.get("password")
+        entered_login = sha256(request.POST.get("login").encode()).hexdigest()
+        entered_password = sha256(request.POST.get("password").encode()).hexdigest()
 
-        correct_login = "mod"
-        correct_password = "1234Q"
+        correct_login = os.getenv("MYZOO_LOGIN")
+        correct_password = os.getenv("MYZOO_PASSWORD")
+
         if entered_login == correct_login and entered_password == correct_password:
             return redirect("main_page_m")
 
