@@ -19,6 +19,17 @@ class AnimalDeleteView(DeleteView):
     success_url = '..'
     template_name = "moderator/animal/delete.html"
 
+def show_moderator_login(request):
+    if request.method=='POST':
+        entered_login = request.POST.get("login")
+        entered_password = request.POST.get("password")
+
+        correct_login = "mod"
+        correct_password = "1234Q"
+        if entered_login == correct_login and entered_password == correct_password:
+            return redirect("main_page_m")
+
+    return render(request, "moderator/login.html")
 
 def show_moderator_main_page(request):
     return render(request, "moderator/main_page.html")

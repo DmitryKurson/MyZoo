@@ -7,7 +7,7 @@
 </head>
 <body>
     {% load static %}
-    <a href="{% url 'main_page' %}"><img style="width:100px" src="{% static 'main/img/main_logo.jpg' %}"></a>
+    <a href="{% url 'main_page_m' %}"><img style="width:100px" src="{% static 'main/img/main_logo.jpg' %}"></a>
 
     <a href="{% url 'contacts' %}">Наші контакти</a>
     <a href="{% url 'prices' %}">Наші ціни</a>
@@ -18,6 +18,6 @@
     {% endblock %}
 </body>
 <footer>
-    <p>© 2025 Зоопарк. Усі права захищені.</p>
+    <p>© 2025 Зоопарк. Усі права захищені. <a href="{% url 'moderator_login' %}">Адміністратор</a> </p>
 </footer>
 </html>

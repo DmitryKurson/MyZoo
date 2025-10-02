@@ -1,0 +1,17 @@
+{% extends "layout_m.html" %}
+{% block title %}Вхід{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<form method="post">
+    {% csrf_token %}
+    <h4>Логін:</h4>
+    <input name="login" type="text"><br><br>
+    <h4>Пароль:</h4>
+    <input name="password" type="text"><br><br>
+    <button type="submit">Увійти</button>
+</form>
+
+{% endblock %}
