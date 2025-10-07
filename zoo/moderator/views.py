@@ -1,3 +1,4 @@
+import json
 import os
 from hashlib import sha256
 from dotenv import load_dotenv
@@ -62,7 +63,6 @@ def show_animals(request):
 
     return render(request, "moderator/animal/show.html", {'all_animals':all_animals, "sort_field":sort_field, "direction":direction})
 
-
 def animal_create(request):
     if request.method == 'POST':
         form = AnimalForm(request.POST)
@@ -73,5 +73,20 @@ def animal_create(request):
     form = AnimalForm
     return render(request, "moderator/animal/create.html", {'form':form})
 
+def save_animals_to_file(request):
+    animals = Animal.objects.all()
+    data = {
+        "animals":[
+            {
+                "id": animal.id,
+                "type": animal.type,
+                "color": animal.color,
+                "age":  animal.age,
+                "zone": animal.zone
+            } for animal in animals
+        ]
+    }
+    with open("data.json", "w", encoding="utf-8") as file:
+        json.dump(data, file, indent=4)
 
-
+    return render(request, "moderator/ok_export.html")

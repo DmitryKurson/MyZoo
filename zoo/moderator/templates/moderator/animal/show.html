@@ -5,6 +5,11 @@
 <br>
 <a href="{% url 'animals_create' %}">Додати тварину</a>
 <br>
+<form action="{% url 'save_animals_to_file' %}" method = 'post'>
+    {% csrf_token %}
+    <button type="submit">Експорт всіх тварин</button>
+</form>
+<br>
 <br>
 <form method="post">
     {% csrf_token %}
