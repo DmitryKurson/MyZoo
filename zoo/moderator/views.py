@@ -1,6 +1,8 @@
 import json
 import os
 from hashlib import sha256
+
+from django.http import HttpResponse
 from dotenv import load_dotenv
 
 from django.shortcuts import render, redirect
@@ -90,3 +92,16 @@ def save_animals_to_file(request):
         json.dump(data, file, indent=4)
 
     return render(request, "moderator/ok_export.html")
+
+def load_animals_from_file(request):
+    try:
+        with open("data.json", "r") as file:
+            data = json.load(file)
+            for animal_data in data.get("animals"):
+                Animal.objects.get_or_create(id = animal_data["id"], type = animal_data["type"], color = animal_data["color"], age = animal_data["age"], zone = animal_data["zone"])
+            return render(request, "moderator/ok_import.html")
+    except FileNotFoundError:
+        return HttpResponse("<h4>Помилка. Файл не знайдено</h4>")
+    except json.JSONDecodeError:
+        return HttpResponse("<h4>Помилка. Файл не розпізнано</h4>")
+

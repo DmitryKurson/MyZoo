@@ -10,6 +10,10 @@
     <button type="submit">Експорт всіх тварин</button>
 </form>
 <br>
+<form action="{% url 'load_animals_from_file' %}" method = 'post'>
+    {% csrf_token %}
+    <button type="submit">Імпортувати тварин</button>
+</form>
 <br>
 <form method="post">
     {% csrf_token %}

@@ -10,8 +10,8 @@ urlpatterns = [
     path('animals/create', views.animal_create, name="animals_create"),
     path('animals/<int:pk>/update', views.AnimalUpdateView.as_view(), name="animal_update"),
     path('animals/<int:pk>/delete', views.AnimalDeleteView.as_view(), name="animal_delete" ),
-    path('animals/export_all', views.save_animals_to_file, name="save_animals_to_file")
-
+    path('animals/export_all', views.save_animals_to_file, name="save_animals_to_file"),
+    path('animals/import_all', views.load_animals_from_file, name="load_animals_from_file")
     #path('clients', views.??, name="clients"),
     #path('clients', views.??, name="workers"),
 
